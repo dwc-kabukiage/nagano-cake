@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :members
   root to: 'homes#top'
   get "home/about" => "homes#about"
+  get "/managers" => "managers/homes#top"
+  
   resources :products, only: [:index, :show]
   resources :cart_items, only: [:index, :update, :create, :destroy]
   resources :orders, only: [:new, :create, :index, :show,]
