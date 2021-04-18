@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     when Member
       root_path
     when Manager
-      admin_top_path
+      managers_path
     end
   end
 end
