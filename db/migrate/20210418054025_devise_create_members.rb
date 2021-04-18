@@ -37,6 +37,8 @@ class DeviseCreateMembers < ActiveRecord::Migration[5.2]
       t.string :first_name_kana
       t.string :postcode
       t.string :address
+      t.string :phone_number
+      t.boolean :is_deleted
       t.timestamps null: false
     end
 
