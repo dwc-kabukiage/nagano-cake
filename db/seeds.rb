@@ -8,5 +8,5 @@
 
 Manager.create!(
   email: 'test@test',
-  encrypted_password: 'manager'
+  password: 'manager'
 )
