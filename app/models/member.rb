@@ -3,9 +3,11 @@ class Member < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-   #ログインする時に退会済み(is_deleted==true)のユーザーを弾くためのメソッド      
+  
+  has_many :orders, dependent: :destroy
+
+  #ログインする時に退会済み(is_deleted==true)のユーザーを弾くためのメソッド      
   def active_for_authentication?
     super && (self.is_deleted == false)
   end       
-         
 end
