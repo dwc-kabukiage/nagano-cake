@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :cart_items, only: [:index, :update, :create, :destroy]
   resources :orders, only: [:new, :create, :index, :show,]
   resources :members, only: [:show, :withdraw, :hide, :edit, :update]
+  put "/members/:id/hide" => "members#hide", as: 'members_hide'
+
   resources :deliveries, only: [:index, :edit, :update, :create, :destroy]
   
   devise_for :managers, controllers: {
