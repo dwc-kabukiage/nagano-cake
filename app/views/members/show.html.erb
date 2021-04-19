@@ -1,0 +1,11 @@
+<h1>マイページ</h1>
+<p>名前<%= @member.last_name %></p>
+<p>住所<%= @member.address %></p>
+<p>電話番号<%= @member.phone_number %></p>
+<p>メールアドレス<%= @member.email %></p>
+<div class="actions">
+<%= link_to '編集', edit_member_registration_path %>
+</div>
+<% if user_signed_in? && @user.id == current_user.id %>
+ <%= link_to "退会", members_hide_path(current_user), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
+<% end %>
