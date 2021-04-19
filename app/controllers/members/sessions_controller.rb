@@ -10,17 +10,17 @@ class Members::SessionsController < Devise::SessionsController
     @member = Member.find_by(email: params[:member][:email].downcase)
     @valid_pass = @member.valid_password?(params[:member][:password])
     @valid_member = @member.active_for_authentication?
-
+    
     if @member && @valid_pass && !@valid_member
       # p "退会済処理"
       flash[:error] = "退会済みです。"
       redirect_to root_path
-
+      
     else
       flash[:error] = "必須項目を入力してください。"
     end
   end
-end
+
   # GET /resource/sign_in
   # def new
   #   super
