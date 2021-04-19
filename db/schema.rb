@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2021_04_19_045833) do
     t.string "postcode"
     t.string "address"
     t.string "phone_number"
-    t.boolean "is_deleted"
+    t.boolean "is_deleted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_members_on_email", unique: true
@@ -81,11 +81,11 @@ ActiveRecord::Schema.define(version: 2021_04_19_045833) do
     t.integer "member_id"
     t.integer "freight", default: 800
     t.integer "claim"
-    t.integer "payment", default: 0
+    t.integer "payment"
     t.string "postcode"
     t.string "address"
     t.string "name"
-    t.integer "received_status", default: 0
+    t.integer "received_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

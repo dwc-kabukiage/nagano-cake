@@ -6,6 +6,6 @@
 <div class="actions">
 <%= link_to '編集', edit_member_registration_path %>
 </div>
-<% if user_signed_in? && @user.id == current_user.id %>
- <%= link_to "退会", members_hide_path(current_user), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
+<% if member_signed_in? && @member.id == current_member.id %>
+ <%= link_to "退会", members_hide_path(current_member), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
 <% end %>

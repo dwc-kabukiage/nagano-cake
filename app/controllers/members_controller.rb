@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  
+
 def show
   @member = Member.find(params[:id])
 end
@@ -20,7 +20,7 @@ end
 
 # def create
 #   @member = Member.new(member_params) #user_paramsはPOSTデータをチェックするメソッド
- 
+
 #   if @member.save
 #     flash[:success] = '新しいユーザーを登録しました。'
 #     redirect_to @member
