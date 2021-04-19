@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+
     belongs_to :member, optional: true #optional: trueは後ほど外します
     has_many :order_details
     enum payment: { "クレジットカード": 0, "銀行振込": 1 }
