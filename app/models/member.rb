@@ -6,7 +6,10 @@ class Member < ApplicationRecord
   
   has_many :orders, dependent: :destroy
 
-  #ログインする時に退会済み(is_deleted==true)のユーザーを弾くためのメソッド      
+  #ログインする時に退会済み(is_deleted==true)のユーザーを弾くためのメソッド  
+  #ログインしようとしているuserがにんしょうかのうかどうか -> true or false;
+  #user.is_deletedがfalseのときにtrueをかえす.
+  
   def active_for_authentication?
     super && (self.is_deleted == false)
   end       
