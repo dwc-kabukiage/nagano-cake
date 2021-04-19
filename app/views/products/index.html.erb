@@ -1,0 +1,27 @@
+<div class="col-lg-8">
+  <h1><%= "商品一覧 (全#{@products.count}件)" %></h1>
+    <% @products.each do |product| %>
+       <div class="product-box">
+          <table class="table">
+            <tr>
+              <th>
+                 <%= link_to product_path(product) do %>
+                 <%= attachment_image_tag(product, :image, size: "180x130", fallback: "default.png") %>
+                 <% end %>
+              </th>
+            </tr>
+            <tr>
+              <th>
+                 <% link_to product.name, product_path(product) %>
+              </th>
+            </tr>
+            <tr>
+              <th>
+                 ￥<%= (product.price * 1.1).to_i %>
+              </th>
+            </tr>
+          </table>
+       </div>
+    <% end %>
+ <%= paginate @posts %>
+</div>
