@@ -16,11 +16,7 @@ Rails.application.routes.draw do
       get 'complete'
       end
       end
-  resources :members, only: [:show, :withdraw, :hide, :edit, :update]
-  put "/members/:id/hide" => "members#hide", as: 'members_hide'
 
-
-  
   resources :deliveries, only: [:index, :edit, :update, :create, :destroy]
 
   devise_for :managers, controllers: {

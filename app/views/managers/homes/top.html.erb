@@ -5,19 +5,20 @@
 <table class="table table-hover">
   <thead>
     <tr>
+      <th>購入日時</th>
       <th>購入者</th>
-      <th>購入日</th>
+      <th>注文個数</th>
       <th>注文ステータス</th>
       <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @members.each do |user| %>
+    <% @orders.each do |order| %>
     <tr>
-      <td><%= user.last_name+user.first_name %></td>
-      <td><%= user.orders.created_at.to_s(:datetime_jp) %></td>
-      <td><%= user.orders.received_status %></td>
+      <td><%= orders.name %></td>
+      <td><%= member.orders.created_at.to_s(:datetime_jp) %></td>
+      <td><%= member.orders.received_status %></td>
       <td></td>
     </tr>
     <% end %>

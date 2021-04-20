@@ -1,5 +1,5 @@
 class Managers::HomesController < ApplicationController
   def top
-    @members = Member.all
+    @orders = Order.all
   end
 end
