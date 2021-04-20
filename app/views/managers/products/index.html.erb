@@ -1,5 +1,5 @@
-<h1>商品一覧</h1
-<%= link_to "新規登録", new_managers_product_path, class: "btn btn-primary" %>
+<h1>商品一覧</h1>
+<%= link_to '新規登録', new_managers_product_path, class: "btn btn-primary" %>
 <table class="table table-hover table-inverse">
 	<thead>
 		<tr>
@@ -14,9 +14,9 @@
 		<% @products.each do |product| %>
 			<tr>
 				<th><%= product.id %></th>
-				<th><%= link_to product.name, managers_product_path(product) %></th>
+				<th><%= link_to managers_product_path(product.id) do %><%= product.name %><% end %></th>
 				<th><%= product.price %></th>
-				<th><%= product.genre.name %></th>
+				<th><%= product.category_id %></th>
 				<th><% if product.is_active == true %>
 					販売中
 					<% else %>
