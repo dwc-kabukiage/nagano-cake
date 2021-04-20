@@ -9,7 +9,16 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show]
   resources :cart_items, only: [:index, :update, :create, :destroy]
-  resources :orders, only: [:new, :create, :index, :show,]
+
+  resources :orders, only: [:new, :create, :index, :show,]do
+    collection do
+      post 'confirm'
+      get 'complete'
+      end
+      end
+  resources :members, only: [:show, :withdraw, :hide, :edit, :update]
+  put "/members/:id/hide" => "members#hide", as: 'members_hide'
+
 
   
   resources :deliveries, only: [:index, :edit, :update, :create, :destroy]

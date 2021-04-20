@@ -1,0 +1,18 @@
+ <h1>商品新規登録</h1>
+ <%= form_with(model: @product, url: managers_products_path, method: :post, local: true) do |f| %>
+ <%= f.label :商品画像 %>
+ <!--#%= f.attachment_field :image %>エラー修正中-->
+ <%= f.label :商品名 %>
+ <%= f.text_field :name %>
+ <%= f.label :商品説明 %>
+ <%= f.text_area :body %>
+ <%= f.label :ジャンル %>
+ <!--#ジャンル入力フォーム必須-->
+ <%= f.label :税抜価格 %>
+ <%= f.text_field :price %>
+ <%= f.radio_button :is_active, true %>
+ <%= f.label :is_active, "販売中" %>
+ <%= f.radio_button :is_active, false %>
+ <%= f.label :is_active, "販売停止中" %>
+ <%= f.submit "新規登録",class:"btn btn-primary" %>
+ <% end %>
