@@ -13,12 +13,11 @@
   </thead>
 
   <tbody>
-    <% @members.each do |user| %>
+    <% @members.each do |m| %>
     <tr>
-      <td><%= user.last_name+user.first_name %></td>
-      <td><%= user.orders.created_at.to_s(:datetime_jp) %></td>
-      <td><%= user.orders.received_status %></td>
-      <td></td>
+      <td><%= m.last_name+m.first_name %></td>
+      <td><%= m.created_at.to_s(:datetime_jp) %></td>
+      <td><%= m.orders.address %></td>
     </tr>
     <% end %>
   </tbody>

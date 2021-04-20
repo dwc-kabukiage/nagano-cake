@@ -12,26 +12,25 @@ Manager.create!(
 )
 
 Member.create!(
-  email: 't@t',
-  password: 'testuser',
-  last_name: '伊藤',
-  first_name: '太郎',
-  last_name_kana: 'イトウ',
-  first_name_kana: 'タロウ',
-  postcode: '100-0014',
-  address: '東京都千代田区永田町1丁目7-1',
-  phone_number: '03-3581-5111'
+  email: 'a@a',
+  password: 'aaaaaa',
+  last_name: 'A',
+  first_name: 'a',
+  last_name_kana: 'AA',
+  first_name_kana: 'aa',
+  postcode: '000-0000',
+  address: 'A都A区',
+  phone_number: '00-0000-0000'
 )
 
 Member.all.each do |member|
   member.orders.create!(
     freight: '800',
-    claim: '1',
-    payment: '1',
+    claim: '500',
+    payment: 1,
     postcode: '000-0000',
-    adress: '東京都千代田区永田町1丁目7-1',
-    name: '国会',
-    received_status: '0',
-    created_at: 'new DateTime()',
+    address: 'A県A市',
+    name: '配送先A',
+    received_status: 1
   )
 end
