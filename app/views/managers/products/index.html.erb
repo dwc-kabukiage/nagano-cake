@@ -1,6 +1,9 @@
-<h1>商品一覧</h1>
-<%= link_to '新規登録', new_managers_product_path, class: "btn btn-primary" %>
-<table class="table table-hover table-inverse">
+<div class="container">
+ <div class="row">
+  <div class="col-lg-12">
+   <h4>商品一覧</h4>
+  <div class="icon"><%= link_to '新規登録', new_managers_product_path, class: "fas fa-plus-circle" %></div><!--アイコン設定後日-->
+  <table class="table table-hover table-inverse">
 	<thead>
 		<tr>
 			<th>商品ID</th>
@@ -16,7 +19,7 @@
 				<th><%= product.id %></th>
 				<th><%= link_to managers_product_path(product.id) do %><%= product.name %><% end %></th>
 				<th><%= product.price %></th>
-				<th><%= product.category_id %></th>
+				<th><%= product.category.name %></th>
 				<th><% if product.is_active == true %>
 					販売中
 					<% else %>
@@ -26,5 +29,9 @@
 			</tr>
 		<% end %>
 	</tbody>
-</table>
-<%= paginate @posts %>
+  </table>
+    <%= paginate @posts %>
+  </div>
+ </div>
+</div>
+

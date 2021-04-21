@@ -1,0 +1,52 @@
+<br><br>
+<h4><%= @member.last_name %><%= @member.first_name %>さんの会員情報</h4>
+<div class="container">
+ <div class="row">
+ 	<div class="col-lg-9">
+<table>
+  <thead>
+    <tr>
+      <th>会員ID</th>
+      <th><%= @member.id %></th>
+    </tr>
+    <tr>
+      <th><br>氏名</th>
+      <th><br><%= @member.last_name %><%= @member.first_name %></th>
+    </tr>
+    <tr>
+      <th><br>フリガナ</th>
+      <th><br><%= @member.last_name_kana %><%= @member.first_name_kana %></th>
+    </tr>
+    <tr>
+      <th><br>郵便番号</th>
+      <th><br><%= @member.postcode %></th>
+    </tr>
+    <tr>
+      <th><br>住所</th>
+      <th><br><%= @member.address %></th>
+    </tr>
+    <tr>
+      <th><br>電話番号</th>
+      <th><br><%= @member.phone_number %></th>
+    </tr>
+    <tr>
+      <th><br>メールアドレス</th>
+      <th><br><%= @member.email %></th>
+    </tr>
+    <tr>
+      <th><br>会員ステータス</th>
+      <th><br><% if @member.is_deleted == false %>
+          退会
+          <% else %>
+        　有効
+          <% end %></th>
+    </tr>
+  </thead>
+</table>
+
+<br><%= link_to "編集する", edit_managers_member_path, class: "btn btn-success" %>
+<%= link_to "注文履歴一覧を見る", managers_order_path, class: "btn btn-primary" %>
+
+</div>
+</div>
+</div>
