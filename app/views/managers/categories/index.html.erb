@@ -1,0 +1,26 @@
+<h1>ジャンル一覧・追加</h1>
+
+<%= form_with model: @category, url: managers_categories_path, local: true do |f| %>
+
+  <p>ジャンル名</p>
+  <%= f.text_field :name %>
+  <%= f.submit '新規登録', class: 'btn btn-primary' %>
+
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>ジャンル</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td><%= link_to "編集する", edit_managers_category_path(category.id), class: 'btn btn-success' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>

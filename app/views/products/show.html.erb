@@ -1,0 +1,14 @@
+<div class="col-lg-4">
+  <%= attachment_image_tag(@product, :image, size: "180x130", fallback: "default.png") %>
+</div>
+<div class="col-lg-4">
+  <h1><%= @product.name %></h1>
+	<p><%= @product.body %></p>
+	<h2>￥<%= (@product.price * 1.1).to_i %><span>（税込）</span></h2>
+	<!--<%= form_with(model: @cart_item, url: cart_items_path, method: :post, local: true) do |f| %>-->
+	<!--<%= f.label :number, "個数選択" %>-->
+	<!--	      <%= f.number_field :number, min: 1, max: 10, placeholder: '個数選択' %>-->
+	<!--	      <%= f.hidden_field :id, :value => @product.id %>-->
+	<!--	      <%= f.submit "カートに入れる", class: "btn btn-primary" %>-->
+	<!--<% end %>-->
+</div>
