@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_18_054037) do
+
+ActiveRecord::Schema.define(version: 2021_04_20_085848) do
+
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "member_id"
@@ -91,7 +93,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_054037) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.integer "category_ID"
+    t.integer "category_id"
     t.string "name"
     t.string "image_id"
     t.text "body"

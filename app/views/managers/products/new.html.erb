@@ -1,13 +1,14 @@
  <h1>商品新規登録</h1>
  <%= form_with(model: @product, url: managers_products_path, method: :post, local: true) do |f| %>
  <%= f.label :商品画像 %>
- <!--#%= f.attachment_field :image %>エラー修正中-->
+ 
+ <%= f.attachment_field :image %>
  <%= f.label :商品名 %>
  <%= f.text_field :name %>
  <%= f.label :商品説明 %>
  <%= f.text_area :body %>
  <%= f.label :ジャンル %>
- <!--#ジャンル入力フォーム必須-->
+ <%= f.collection_select :category_id, Category.all, :id, :name %>
  <%= f.label :税抜価格 %>
  <%= f.text_field :price %>
  <%= f.radio_button :is_active, true %>
