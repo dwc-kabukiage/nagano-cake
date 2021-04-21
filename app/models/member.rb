@@ -5,7 +5,7 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :orders, dependent: :destroy
-
+  has_many :deliveries, dependent: :destroy
   #ログインする時に退会済み(is_deleted==true)のユーザーを弾くためのメソッド  
   #ログインしようとしているuserがにんしょうかのうかどうか -> true or false;
   #user.is_deletedがfalseのときにtrueをかえす.
