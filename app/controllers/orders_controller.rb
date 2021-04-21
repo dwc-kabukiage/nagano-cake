@@ -25,6 +25,14 @@ class OrdersController < ApplicationController
     @order.save
     flash[:notice] = "ご注文が確定しました。"
     redirect_to complete_orders_path
+    @cart_items = current_cart
+    @cart_items.each do |cart_item|
+    OrderDetail.create(
+      product:  cart_item.product,
+      order:    @order,
+      number: cart_item.number,
+      subprice: sub_price(cart_item)
+    )
   end
 
   def index
