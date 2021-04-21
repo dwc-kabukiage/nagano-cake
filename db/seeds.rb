@@ -11,27 +11,22 @@ Manager.create!(
   password: 'manager'
 )
 
-Member.create!(
-  email: 't@t',
-  password: 'testuser',
-  last_name: '伊藤',
-  first_name: '太郎',
-  last_name_kana: 'イトウ',
-  first_name_kana: 'タロウ',
-  postcode: '100-0014',
-  address: '東京都千代田区永田町1丁目7-1',
-  phone_number: '03-3581-5111'
+Category.create!(
+  name: 'キャンディ'
 )
 
-Member.all.each do |member|
-  member.orders.create!(
-    freight: '800',
-    claim: '1',
-    payment: '1',
-    postcode: '000-0000',
-    adress: '東京都千代田区永田町1丁目7-1',
-    name: '国会',
-    received_status: '0',
-    created_at: 'new DateTime()',
+Category.all.each do |c|
+  c.products.create!(
+    [{
+      name: '商品１',
+      body: '商品１の紹介',
+      price: '100',
+      is_active: 'TRUE'
+    },{
+      name: '商品2',
+      body: '商品２の紹介',
+      price: '300',
+      is_active: 'TRUE'
+    }]
   )
 end

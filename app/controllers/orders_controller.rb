@@ -11,14 +11,13 @@ class OrdersController < ApplicationController
       @order.postcode = current_member.postcode
       @order.address = current_member.address
       @order.name = current_member.last_name + current_member.first_name
-    
+
     elsif params[:order][:addresses] == "new_address"
       @order.postcode = params[:order][:postcode]
       @order.address     = params[:order][:address]
       @order.name        = params[:order][:name]
     end
   end
-
 
   def create
     @order = current_member.orders.new(order_params)
@@ -33,8 +32,8 @@ class OrdersController < ApplicationController
       number: cart_item.number,
       subprice: sub_price(cart_item)
     )
-  end
-
+   end
+　end
   def index
     @orders = Order.all
   end
