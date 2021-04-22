@@ -52,10 +52,15 @@
       <th>個数</th>
       <th>小計</th>
     </tr>
+      <% @order_details.each do |order_detail| %>
     <tr>
+
+      <td><%= order_detail.product.name %></td>
+      <td id = "taxprice"><%= (order_detail.product.price * 1.1).to_i %></td>
+      <td><%= order_detail.number %></td>
       <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+   </tr>
+      <% end %>
   </table>
+
 </div>

@@ -9,7 +9,24 @@
           <th style="width: 20%">数量</th>
           <th style="width: 20%">小計</th>
         </tr>
-      </table> 
+          <% @cart_items.each do |cart_items| %>
+            <tr>
+              <td class="text-left">
+                <%= attachment_image_tag( cart_items.product, :image, size: "60x50", fallback: "no_image.jpg") %>
+                <%= cart_items.product.name %>
+              </td>
+              <td class="text-right">
+                <%= (cart_items.product.price * 1.1).to_i %><span>円</span>
+              </td>
+              <td class="text-right">
+                <%= cart_items.number %>個
+              </td>
+              <td class="text-right" id='claim' >
+                <%= (cart_items.product.price * 1.1 * cart_items.number).to_i %>
+              </td>
+            </tr>
+          <% end %>
+      </table>
     </div>
     <div class="col-md-4">
     <table class="table  table-bordered">
@@ -41,7 +58,7 @@
       <th></th>
       <td><%= " #{@order.name}" %></td>
     </tr>
-  </table> 
+  </table>
   </div>
    <%= form_for @order do |f| %>
     <%= f.hidden_field :postcode %>
