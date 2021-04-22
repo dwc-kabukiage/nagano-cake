@@ -1,27 +1,24 @@
  <div class="container">
   <div class="row">
    <div class="col-lg-12">
- <h4>商品新規登録</h4>
-   </div>
-   <div class="edit">
+ <h4><span style="background-color: #EEEEEE">商品新規登録</span></h4>
  <%= form_with(model: @product, url: managers_products_path, method: :post, local: true) do |f| %>
- <%= f.label :商品画像 %>
- 
- <%= f.attachment_field :image %>
+ <br><%= f.label :商品画像 %>
+ <span style="margin-left: 100px"><%= f.attachment_field :image %></span>
  <br><br><%= f.label :商品名 %>
- <%= f.text_field :name %>
+ <span style="margin-left: 117px"><%= f.text_field :name %></span>
  <br><br><%= f.label :商品説明 %>
- <%= f.text_area :body %>
+ <span style="margin-left: 102px"><%= f.text_area :body %></span>
  <br><br><%= f.label :ジャンル %>
- <%= f.collection_select :category_id, Category.all, :id, :name %>
+ <span style="margin-left: 105px"><%= f.collection_select :category_id, Category.all, :id, :name %></span>
  <br><br><%= f.label :税抜価格 %>
- <%= f.text_field :price %>
+ <span style="margin-left: 102px"><%= f.text_field :price %></span>
  <br><br><%= f.label :販売ステータス %>
- <%= f.radio_button :is_active, true %>
+ <span style="margin-left: 60px"><%= f.radio_button :is_active, true %></span>
  <%= f.label :is_active, "販売中" %>
- <%= f.radio_button :is_active, false %>
+ <span style="margin-left: 30px"><%= f.radio_button :is_active, false %></span>
  <%= f.label :is_active, "販売停止中" %>
- <br><br><%= f.submit "新規登録",class:"btn-success" %>
+ <br><br><span style="margin-left: 200px"><%= f.submit "新規登録",class:"btn btn-success" %></span>
  <% end %>
    </div>
  </div>

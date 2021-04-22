@@ -1,5 +1,5 @@
 <div class="container">
-  <h4>商品詳細</h4>
+  <h4><span style="background-color: #EEEEEE">商品詳細</span></h4>
 <div class="row">
   <div class="col-lg-4">
  <%= attachment_image_tag(@product, :image,size: "300x200", fallback: "default.jpg") %>
@@ -11,29 +11,28 @@
     <th><%= @product.name %></th>
   </tr>
   <tr>
-    <th>商品説明</th>
-    <th><%= @product.body %></th>
+    <th><br>商品説明</th>
+    <th><br><%= @product.body %></th>
   </tr>
   <tr>
-    <th>ジャンル</th>
-		<th><%= @product.category.name %></th>
+    <th><br>ジャンル</th>
+		<th><br><%= @product.category.name %></th>
   </tr>
   <tr>
-    <th>税込価格<br>(税抜価格)</th>
-		<th><%= (@product.price * 1.1).to_i %>(<%= @product.price %>)円</th>
+    <th><br>税込価格<br>(税抜価格)</th>
+		<th><br><%= (@product.price * 1.1).to_i %>(<%= @product.price %>)円</th>
   </tr>
   <tr>
-    <th>販売ステータス</th>
-    <th>
-				<% if @product.is_active == true %>
-				<div class="sales">販売中</div>
+    <th><br>販売ステータス</th>
+    <th><br><% if @product.is_active == true %>
+				<span style="color: green">販売中</span>
 				<% else %>
-	      販売停止中
+	      <span style="color: gray">販売停止中</span>
 				<% end %>
 	  </th>
   </tr>
   <tr>
-    <th><%= link_to '編集する', edit_managers_product_path(@product), class: "btn btn-success" %></th>
+    <th><br><span style="margin-left: 100px"><%= link_to '編集する', edit_managers_product_path(@product), class: "btn btn-success" %></span></th>
   </tr>
   </table>
   </div>
