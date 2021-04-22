@@ -20,8 +20,10 @@
           <%= order.address %><br>
           <%= order.name %>
         </td>
-        <td></td>
-        <td></td>
+        <td> <% order.order_details.each do |order_detail| %>
+    		          	<%= order_detail.product.name %><br>
+    		          <% end %></td>
+        <td><%= order.claim.to_s(:delimited) %>円</td>
         <td>
           <%= order.received_status %>
         </td>

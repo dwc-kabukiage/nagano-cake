@@ -1,12 +1,13 @@
 class Managers::OrdersController < ApplicationController
   
   def index
-    @order = Order.all
+    @order = Order.all.order("id DESC")
   end
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
     @member = @order.member
+   @total_price = (@order.claim - @order.freight )
   end
   def update 
     @order = Order.find(params[:id])
@@ -20,5 +21,6 @@ class Managers::OrdersController < ApplicationController
   private
   def order_params
      params.require(:order).permit(:received_status)
-  end
+  end  
+ 
 end
