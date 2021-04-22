@@ -1,51 +1,50 @@
-<br><br>
-<h4><%= @member.last_name %><%= @member.first_name %>さんの会員情報</h4>
 <div class="container">
  <div class="row">
  	<div class="col-lg-9">
+<h4><span style="background-color: #EEEEEE"><%= @member.last_name %><%= @member.first_name %>さんの会員情報</span></h4>
 <table>
   <thead>
-    <tr>
+    <br><tr>
       <th>会員ID</th>
-      <th><%= @member.id %></th>
+      <th><span style="margin-left: 100px"><%= @member.id %></span></th>
     </tr>
     <tr>
       <th><br>氏名</th>
-      <th><br><%= @member.last_name %><%= @member.first_name %></th>
+      <th><br><span style="margin-left: 100px"><%= @member.last_name %><%= @member.first_name %></span></th>
     </tr>
     <tr>
       <th><br>フリガナ</th>
-      <th><br><%= @member.last_name_kana %><%= @member.first_name_kana %></th>
+      <th><br><span style="margin-left: 100px"><%= @member.last_name_kana %><%= @member.first_name_kana %></span></th>
     </tr>
     <tr>
       <th><br>郵便番号</th>
-      <th><br><%= @member.postcode %></th>
+      <th><br><span style="margin-left: 100px"><%= @member.postcode %></span></th>
     </tr>
     <tr>
       <th><br>住所</th>
-      <th><br><%= @member.address %></th>
+      <th><br><span style="margin-left: 100px"><%= @member.address %></span></th>
     </tr>
     <tr>
       <th><br>電話番号</th>
-      <th><br><%= @member.phone_number %></th>
+      <th><br><span style="margin-left: 100px"><%= @member.phone_number %></span></th>
     </tr>
     <tr>
       <th><br>メールアドレス</th>
-      <th><br><%= @member.email %></th>
+      <th><br><span style="margin-left: 100px"><%= @member.email %></span></th>
     </tr>
     <tr>
       <th><br>会員ステータス</th>
-      <th><br><% if @member.is_deleted == false %>
-          退会
+      <th><br><span style="margin-left: 100px"><% if @member.is_deleted == false %>
+          <span style="color: green">有効</span>
           <% else %>
-        　有効
-          <% end %></th>
+        　無効
+          <% end %></span></th>
     </tr>
   </thead>
 </table>
 
-<br><%= link_to "編集する", edit_managers_member_path, class: "btn btn-success" %>
-<%= link_to "注文履歴一覧を見る", managers_order_path, class: "btn btn-primary" %>
+<br><span style="margin-left: 200px"><%= link_to "編集する", edit_managers_member_path, class: "btn btn-success" %></span>
+<span style="margin-left: 100px"><%= link_to "注文履歴一覧を見る", managers_order_path, class: "btn btn-primary" %></span>
 
 </div>
 </div>
