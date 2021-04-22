@@ -1,5 +1,8 @@
-<h2>Log in</h2>
-
+ <div class = "container">
+ <div class = "row">
+  <div class = "col-md-8 offset-md-1">
+ <h2>ログイン</h2>
+<h5>会員の方はこちらから</h5>
 <%= form_with model: @member, url: member_session_path, local: true do |f| %>
   <div class="field">
     <%= f.label :メールアドレス %><br />
@@ -20,11 +23,14 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "ログイン", class: "btn btn-primary" %>
   </div>
 <% end %>
 
 <%= flash[:error] %>
-
-
-<%= render "members/shared/links" %>
+<br/>
+<h5>会員登録がお済みでない方</h5>
+<h7><%= link_to "こちら", new_member_registration_path %>から新規登録を行ってください</h7>
+</div>
+</div>
+</div>

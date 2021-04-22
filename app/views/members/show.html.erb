@@ -1,16 +1,52 @@
-<div class="col-lg-8">
+
+<div class = "container">
+ <div class = "row">
+  <div class = "col-md-8 offset-md-1">
+
 <h1>マイページ</h1>
-<p>名前<%= @member.last_name %></p>
-<p>住所<%= @member.address %></p>
-<p>電話番号<%= @member.phone_number %></p>
-<p>メールアドレス<%= @member.email %></p>
-<div class="actions">
-<%= link_to '編集', edit_members_path %>
-</div>
 <div>
-<%= link_to '配送一覧', deliveries_path %>
+ <h4>登録情報<%= link_to '編集する', edit_members_path, class: "btn btn-success" %></h4>
 </div>
-<div>
-<%= link_to '注文履歴一覧', orders_path %>
+ <table class="table  table-bordered">
+        <tr>
+          <th style="width: 20%">氏名</th>
+          <td><%= @member.last_name %><%= @member.first_name %></td>
+        </tr>
+
+        <tr>
+         <th style="width: 20%">フリガナ</th>
+         <td><%= @member.last_name_kana %><%= @member.first_name_kana %></td>
+        </tr>
+
+
+　　    <tr>
+         <th style="width: 20%">郵便番号</th>
+         <td><%= @member.postcode %></td>
+        </tr>
+
+　　 　 <tr>
+         <th style="width: 20%">住所</th>
+         <td><%= @member.address %></td>
+        </tr>
+
+        <tr>
+         <th style="width: 20%">電話番号</th>
+         <td><%= @member.phone_number %></td>
+        </tr>
+
+        <tr>
+         <th style="width: 20%">メールアドレス</th>
+         <td><%= @member.email %></td>
+        </tr>
+ </table>
+ <div>
+　<h4>配送先<%= link_to '一覧を見る', deliveries_path, class: "btn btn-primary" %></h4>
+ </div>
+
+ <div>
+  <h4>注文履歴<%= link_to '一覧を見る', orders_path, class: "btn btn-primary"%></h4>
+ </div>
+
 </div>
+ </div>
 </div>

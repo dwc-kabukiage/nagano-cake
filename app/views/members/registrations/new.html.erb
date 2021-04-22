@@ -1,5 +1,7 @@
-<div class="col-lg-8">
-<h2>新規登録</h2>
+<div class = "container">
+ <div class = "row">
+  <div class = "col-md-8 offset-md-1">
+<h2>新規会員登録</h2>
 <%#= form_with model: @member, url: member_registration_path, id: 'new_member', class: 'new_member', local: true do |f| %>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name) ,class: "form-group")  do |f| %>
   <%= render "members/shared/error_messages", resource: resource %>
@@ -13,10 +15,10 @@
   </div>
 
   <div class="field">
-    <%= f.label :ふりがな %>
+    <%= f.label :フリガナ%>
     <%= f.text_field :last_name_kana, autofocus: true %>
 
-    <%= f.label :ふりがな %>
+    <%= f.label :フリガナ %>
     <%= f.text_field :first_name_kana, autofocus: true %>
   </div>
 
@@ -56,9 +58,13 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "新規登録", class: "btn btn-success" %>
   </div>
 <% end %>
-</div>
 
-<%= render "members/shared/links" %>
+  <br/>
+<h5>既に登録済みの方</h5>
+<h7><%= link_to "こちら", new_member_session_path %>からログインしてください</h7>
+</div>
+</div>
+</div>
