@@ -22,9 +22,17 @@ class DeliveriesController < ApplicationController
    end
   end
 
+
   def edit
      @delivery = Delivery.find(params[:id])
   end
+
+
+  
+  def edit
+     @delivery = Delivery.find(params[:id])
+  end
+  
 
   def destroy
     delivery = Delivery.find(params[:id])
@@ -38,4 +46,5 @@ class DeliveriesController < ApplicationController
    params.require(:delivery).permit(:postcode, :address, :name)
   end
 end
+
 

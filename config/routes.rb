@@ -8,10 +8,19 @@ Rails.application.routes.draw do
   get "/managers" => "managers/homes#top"
 
   resources :products, only: [:index, :show]
-  resources :cart_items, only: [:index, :update, :create, :destroy]
-  resources :orders, only: [:new, :create, :index, :show,]
+  resources :cart_items, only: [:index, :update, :create, :destroy] do
+    collection do
+      delete 'destroy_all'
+    end
+  end
 
-  
+  resources :orders, only: [:new, :create, :index, :show,]do
+    collection do
+      post 'confirm'
+      get 'complete'
+    end
+  end
+
   resources :deliveries, only: [:index, :edit, :update, :create, :destroy]
 
   devise_for :managers, controllers: {
