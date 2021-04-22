@@ -3,7 +3,8 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
   def confirm
-   @order = Order.new(
+    @cart_items = current_member.cart_items
+    @order = Order.new(
       member: current_member,
       payment: params[:order][:payment]
     )
@@ -24,14 +25,22 @@ class OrdersController < ApplicationController
     @order.save
     flash[:notice] = "ご注文が確定しました。"
     redirect_to complete_orders_path
+    @cart_items = current_member.cart_items
+    @cart_items.each do |cart_item|
+    OrderDetail.create(
+      product:  cart_item.product,
+      order:    @order,
+      number: cart_item.number,
+    )
   end
-
+  end
   def index
     @orders = Order.all
   end
 
   def show
     @order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
   private
   def order_params

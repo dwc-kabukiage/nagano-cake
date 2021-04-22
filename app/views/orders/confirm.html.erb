@@ -1,38 +1,70 @@
-<h2>注文情報確認</h2>
- 
-<table class="table  table-bordered">
-    <tr>
-        <th>商品</th>
-        <th>単価（税込）</th>
-        <th>数量</th>
-        <th>小計</th>
-    </tr>
-</table>
-<table class="table  table-bordered">
-    <h5>請求情報</h5>
-    <tr>
+<div class="container">
+  <h2 class="pl-5">注文情報確認</h2>
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table  table-bordered">
+        <tr>
+          <th style="width: 20%">商品</th>
+          <th style="width: 20%">単価（税込）</th>
+          <th style="width: 20%">数量</th>
+          <th style="width: 20%">小計</th>
+        </tr>
+          <% @cart_items.each do |cart_items| %>
+            <tr>
+              <td class="text-left">
+                <%= attachment_image_tag( cart_items.product, :image, size: "60x50", fallback: "no_image.jpg") %>
+                <%= cart_items.product.name %>
+              </td>
+              <td class="text-right">
+                <%= (cart_items.product.price * 1.1).to_i %><span>円</span>
+              </td>
+              <td class="text-right">
+                <%= cart_items.number %>個
+              </td>
+              <td class="text-right" id='claim' >
+                <%= (cart_items.product.price * 1.1 * cart_items.number).to_i %>
+              </td>
+            </tr>
+          <% end %>
+      </table>
+    </div>
+    <div class="col-md-4">
+    <table class="table  table-bordered">
+      <h5>請求情報</h5>
+      <tr>
         <th>送料</th>
         <td><%= @order.freight %></td>
-    </tr>
-    <tr>
+      </tr>
+      <tr>
         <th>商品合計</th>
         <td></td>
-    </tr>
-    <tr>
+      </tr>
+      <tr>
         <th>請求金額</th>
         <td><%= @order.claim %></td>
+      </tr>
+    </table>
+  </div>
+  <table>
+    <tr>
+      <th>お支払方法</th>
+      <td><%= @order.payment %></td>
     </tr>
-</table>
-<h3>支払い方法</h3>
-<%= @order.payment %>
-<h3>お届け先</h3>
-   <%= "#{@order.postcode} #{@order.address} 　#{@order.name}" %>
-  
+    <tr>
+      <th>お届け先</th>
+      <td><%= "#{@order.postcode} #{@order.address}" %></td>
+    </tr>
+    <tr>
+      <th></th>
+      <td><%= " #{@order.name}" %></td>
+    </tr>
+  </table>
+  </div>
    <%= form_for @order do |f| %>
     <%= f.hidden_field :postcode %>
     <%= f.hidden_field :address %>
     <%= f.hidden_field :name %>
     <%= f.hidden_field :payment %>
     <%= f.hidden_field :claim %>
-     <%= f.submit '投稿する' %>
+    <%= f.submit '投稿する', class: "btn btn-primary col-md-4 offset-md-4" %>
 <% end %>

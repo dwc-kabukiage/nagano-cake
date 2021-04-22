@@ -1,23 +1,37 @@
+<div class="container">
+  <div class="row">
+  <div class="col-md-8">
+    <h2 class="pl-5">注文情報入力</h2>
+    <%= form_with :model => @order, url:confirm_orders_path, method: :post, local:true do |f| %>
+    <h3>支払い方法</h3>
+    <div class="pl-4">
+      <%= f.radio_button :payment, :"クレジットカード", checked: true %>
+      <span>クレジットカード</span><br>
+      <%= f.radio_button :payment, :"銀行振込" %>
+      <span>銀行振り込み</span></div>
+    <h3>お届け先</h3><br>
+    <div class="pl-4">
+      <%= f.radio_button :addresses, "residence", checked: true  %>
+      <span>ご自身の住所</span><br>
+      <div class="pl-4">
+        〒<%= "#{current_member.postcode} #{current_member.address}" %><br>
+        <%= "#{current_member.last_name} #{current_member.first_name}" %><br>
+      </div>
+      <%= f.radio_button :addresses, "new_address" %>
+      <span>新しいお届け先</span><br>
+      <div class="pl-4">
+        <span>郵便番号（ハイフンなし）</span>
+        <%= f.text_field :postcode, class: "col-sm-3" %><br>
+        <span>住所</span>
+        <%= f.text_field :address, class: "col-sm-6" %><br>
+        <span>宛名</span>
+        <%= f.text_field :name, class: "col-sm-3" %><br>
+      </div>
+    </div>
+        <%= f.submit "確認画面へ進む", class: "btn btn-primary col-md-4 offset-md-4" %>
+    <% end %>
+  
+  </div>  
 
-<h2>注文情報入力</h2>
-<%= form_with :model => @order, url:confirm_orders_path, method: :post, local:true do |f| %>
- <h3>支払い方法</h3>
- <%= f.radio_button :payment, :"クレジットカード", checked: true %>
- <span>クレジットカード</span><br>
- <%= f.radio_button :payment, :"銀行振込" %>
- <span>銀行振り込み</span>
-<h3>お届け先</h3><br>
-<%= f.radio_button :addresses, "residence", checked: true  %>
-<span>ご自身の住所</span>
- <%= "#{current_member.postcode} #{current_member.address}" %>
- <%= "#{current_member.last_name} #{current_member.first_name}" %><br>
- <%= f.radio_button :addresses, "new_address" %>
- <span>新しいお届け先</span><br>
- <span>郵便番号（ハイフンなし）</span>
- <%= f.text_field :postcode %>
- <span>住所</span>
- <%= f.text_field :address %>
- <span>宛名</span>
- <%= f.text_field :name %><br>
- <%= f.submit "確認画面へ進む" %>
-<% end %>
+  </div>
+</div>
