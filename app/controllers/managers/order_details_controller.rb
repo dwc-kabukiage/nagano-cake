@@ -11,6 +11,6 @@ class Managers::OrderDetailsController < ApplicationController
 
     private
     def order_detail_params
-        params require(:order_detail).permit(:make_status)
+        params.require(:order_detail).permit(:make_status)
     end
 end

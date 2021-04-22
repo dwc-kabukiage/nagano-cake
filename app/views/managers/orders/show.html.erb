@@ -31,7 +31,7 @@
     </tr>
   </table>
   <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-8">
       <table class="table  table-bordered">
         <tr>
           <th>商品名</th>
@@ -40,24 +40,28 @@
           <th>小計</th>
           <th>制作ステータス</th>
         </tr>
+        <% @order_details.each do |order_detail| %>
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td> <%= order_detail.product.name %></td>
+          <td><%= (order_detail.product.price * 1.1).to_i  %></td>
+          <td> <%= order_detail.number %></td>
+          <td><%= order_detail.total_price %></td>
+          </td>
           <td>
-            <% @order_details.each do |order_detail| %>
-            <%= f.selct :make_status, OrderDetail.make_statuses.keys %>
-            <% end %>
+          <%= form_for order_detail, url: managers_order_order_detail_path(@order, order_detail), method: :patch do |f| %>
+            <%= f.select :make_status, OrderDetail.make_statuses.keys, class: "order_status" %>
+            <%= f.submit '更新'  ,class: "btn btn-warning" %>
+          <% end %>
           </td>
         </tr>
+        <% end %>
       </table>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <table>
         <tr>
           <th>商品合計</th>
-          <td>円</td>
+          <td><%= @total_price %>円</td>
           </tr>
           <tr>
           <th>送料</th>

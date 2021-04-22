@@ -32,7 +32,9 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :new, :create, :show, :update, :edit]
   resources :categories, only: [:index, :create, :update, :edit]
   resources :members, only: [:index, :show, :update, :edit]
-  resources :orders, only: [:show, :update]
+  resources :orders, only: [:show, :update] do
+    resources :order_details,only: [:update]
+    end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

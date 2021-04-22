@@ -4,9 +4,14 @@ class OrdersController < ApplicationController
   end
   def confirm
     @cart_items = current_member.cart_items
+    @total_price = 0
+    @cart_items.each do |cart_item|
+    @total_price += (cart_item.product.price * 1.1 * cart_item.number ).to_i
+    end
     @order = Order.new(
       member: current_member,
-      payment: params[:order][:payment]
+      payment: params[:order][:payment],
+      claim: @total_price + 800
     )
     if params[:order][:addresses] == "residence"
       @order.postcode = current_member.postcode
@@ -31,16 +36,19 @@ class OrdersController < ApplicationController
       product:  cart_item.product,
       order:    @order,
       number: cart_item.number,
+      total_price: (cart_item.product.price * 1.1 * cart_item.number).to_i
     )
   end
+  @cart_items.destroy_all
   end
   def index
-    @orders = Order.all
+    @orders = current_member.orders.all.order("id DESC")
   end
 
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
+   @total_price = (@order.claim - @order.freight )
   end
   private
   def order_params

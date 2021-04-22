@@ -22,7 +22,7 @@
                 <%= cart_items.number %>個
               </td>
               <td class="text-right" id='claim' >
-                <%= (cart_items.product.price * 1.1 * cart_items.number).to_i %>
+                <%= (cart_items.product.price * 1.1 * cart_items.number).to_i %>円
               </td>
             </tr>
           <% end %>
@@ -33,30 +33,30 @@
       <h5>請求情報</h5>
       <tr>
         <th>送料</th>
-        <td><%= @order.freight %></td>
+        <td><%= @order.freight %>円</td>
       </tr>
       <tr>
         <th>商品合計</th>
-        <td></td>
+        <td><%= @total_price %>円</td>
       </tr>
       <tr>
         <th>請求金額</th>
-        <td><%= @order.claim %></td>
+        <td><%= @order.claim %>円</td>
       </tr>
     </table>
   </div>
   <table>
     <tr>
       <th>お支払方法</th>
-      <td><%= @order.payment %></td>
+      <td class="pl-5"><%= @order.payment %></td>
     </tr>
     <tr>
       <th>お届け先</th>
-      <td><%= "#{@order.postcode} #{@order.address}" %></td>
+      <td class="pl-5">〒<%= "#{@order.postcode} #{@order.address}" %></td>
     </tr>
     <tr>
       <th></th>
-      <td><%= " #{@order.name}" %></td>
+      <td class="pl-5"><%= " #{@order.name}" %></td>
     </tr>
   </table>
   </div>
