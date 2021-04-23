@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   def new
     @order = Order.new
+    @deliveries = Delivery.where(member: current_member)
   end
   def confirm
     @cart_items = current_member.cart_items
@@ -22,6 +23,10 @@ class OrdersController < ApplicationController
       @order.postcode = params[:order][:postcode]
       @order.address     = params[:order][:address]
       @order.name        = params[:order][:name]
+    elsif params[:order][:addresses] == "member_deliveries"
+      @order.postcode = Delivery.find(params[:order][:delivery_id]).postcode
+      @order.address     =  Delivery.find(params[:order][:delivery_id]).address
+      @order.name        =  Delivery.find(params[:order][:delivery_id]).name
     end
   end
 
