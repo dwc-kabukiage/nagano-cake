@@ -1,5 +1,5 @@
 class Managers::MembersController < ApplicationController
-  # before_action :authenticate_manager!
+  before_action :authenticate_manager!
 
   def index
     @members = Member.all
