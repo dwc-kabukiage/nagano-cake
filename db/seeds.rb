@@ -10,23 +10,3 @@ Manager.create!(
   email: 'm@m',
   password: 'manager'
 )
-
-Category.create!(
-  name: 'キャンディ'
-)
-
-Category.all.each do |c|
-  c.products.create!(
-    [{
-      name: '商品１',
-      body: '商品１の紹介',
-      price: '100',
-      is_active: 'TRUE'
-    },{
-      name: '商品2',
-      body: '商品２の紹介',
-      price: '300',
-      is_active: 'TRUE'
-    }]
-  )
-end

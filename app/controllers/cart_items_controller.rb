@@ -1,4 +1,6 @@
 class CartItemsController < ApplicationController
+  before_action :authenticate_member!,except: [:top]
+
   def index
     @cart_items = current_member.cart_items
 

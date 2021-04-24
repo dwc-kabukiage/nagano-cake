@@ -16,6 +16,16 @@
 
 @import "bootstrap";
 
-.container{
-    padding-top: 20px;
+.manager_login{
+  h2{
+    margin-bottom: 20px;
+  }
+
+  .field{
+    margin-bottom: 20px;
+  }
+
+  .actions{
+    text-align: center;
+  }
 }
