@@ -12,14 +12,13 @@ class Member < ApplicationRecord
   #ログインしようとしているuserがにんしょうかのうかどうか -> true or false;
   #user.is_deletedがfalseのときにtrueをかえす.
   validates :last_name, presence: true
-  validates :last_name_kana, presence: true
+  validates :last_name_kana, format: { with:/\A[\p{katakana}]+\z/}
   validates :first_name, presence: true
-  validates :first_name_kana, presence: true
+  validates :first_name_kana, format: { with:/\A[\p{katakana}]+\z/}
   validates :address, presence: true
   validates :postcode, format: {with: /\A\d{7}\z/}
   validates :phone_number, format: { with: /\A\d{10,11}\z/}
-  # validates :postcode, allow_blank: true, numericality: {only_integer: true}, length: { in: 10..11 }, presence: true
-
+  
   def active_for_authentication?
     super && (self.is_deleted == false)
   end
