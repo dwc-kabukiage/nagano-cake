@@ -25,8 +25,12 @@ end
 
 def update
   @member = current_member
-  @member.update(member_params)
+ if @member.update(member_params)
+   flash[:success] = "successfuly"
   redirect_to members_path
+ else
+  render:edit
+ end
 end
 
 private

@@ -1,12 +1,17 @@
-<div class="col-lg-8">
-<h1>退会確認</h1>
-<p>退会してもよろしいでしょうか？</p>
-<div>
-<% if member_signed_in? && @member.id == current_member.id %>
- <%= link_to "退会する", members_hide_path(current_member), method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
-<% end %>
+<div class = "container">
+ <div class = "row">
+  <div class = "col-md-8 offset-md-1">
+
+    <h1>退会確認</h1>
+     <p>退会してもよろしいでしょうか？</p>
+    <div>
+     <% if member_signed_in? && @member.id == current_member.id %>
+      <%= link_to "退会する", members_hide_path(current_member), method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
+     <% end %>
+    </div>
+    <div>
+     <%= link_to "退会しない", members_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+ </div>
 </div>
-<div>
-  <%= link_to "退会しない", members_path, class: "btn btn-primary" %>
-</div>
-</div
