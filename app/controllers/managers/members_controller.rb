@@ -1,4 +1,5 @@
 class Managers::MembersController < ApplicationController
+
   before_action :authenticate_manager!
 
   def index
@@ -8,12 +9,19 @@ class Managers::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
+    # @order = Order.find(params[:id])
+    # @order_details = @order.order_details
   end
 
   def update
     @member = Member.find(params[:id])
     @member.update(member_params)
+    if @member.save
     redirect_to managers_members_path(@member)
+    else
+    @member = Member.find(params[:id])
+    render :edit
+    end
   end
 
   def edit
