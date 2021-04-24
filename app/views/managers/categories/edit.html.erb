@@ -5,9 +5,11 @@
 
 <%= form_with model: @category, url: managers_category_path, local: true do |f| %>
 
-<br><p>ジャンル名
-<%= f.text_field :name %>
-<%= f.submit '変更を保存', class: 'btn btn-success' %></p>
+<br>
+   <p><span style="margin-right: 100px">ジャンル名</span>
+   <%= f.text_field :name %>
+<span style="margin-left: 100px"><%= f.submit '変更を保存', class: 'btn btn-success' %></span>
+</p>
 <% end %>
 </div>
  </div>

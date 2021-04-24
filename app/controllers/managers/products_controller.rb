@@ -6,7 +6,7 @@ class Managers::ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    @posts = @products.page(params[:page]).reverse_order
+    @posts = @products.page.per(10)
   end
 
   def show
@@ -16,7 +16,7 @@ class Managers::ProductsController < ApplicationController
   def create
      @product = Product.new(product_params)
      @product.save
-     redirect_to managers_products_path(@product)
+     redirect_to managers_product_path(@product)
   end
 
   def update
