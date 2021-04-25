@@ -1,8 +1,8 @@
  <div class = "container">
  <div class = "row">
   <div class = "col-md-8 offset-md-1">
- <h2>ログイン</h2>
-<h5>会員の方はこちらから</h5>
+ <h3>ログイン</h3>
+<p><h5>会員の方はこちらから</h5></p>
 <%= form_with model: @member, url: member_session_path, local: true do |f| %>
   <div class="field">
     <%= f.label :メールアドレス %><br />
@@ -13,7 +13,7 @@
     <%= f.label :パスワード %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
-  
+
 
   <% if devise_mapping.rememberable? %>
     <div class="field">
