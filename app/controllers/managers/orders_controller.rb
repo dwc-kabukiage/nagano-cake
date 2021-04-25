@@ -1,5 +1,5 @@
 class Managers::OrdersController < ApplicationController
-  
+    before_action :authenticate_manager!
   def index
     @order = Order.all.order("id DESC")
   end
