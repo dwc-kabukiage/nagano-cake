@@ -1,12 +1,12 @@
 class ApplicationController < ActionController::Base
-  
+
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource) #ログイン後画面遷移先
     case resource
 
     when Member
-      members_path(current_member)
+      members_path
     when Manager
       managers_path
     end
