@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_member!,except: [:top]
   def new
     @order = Order.new
     @deliveries = Delivery.where(member: current_member)
