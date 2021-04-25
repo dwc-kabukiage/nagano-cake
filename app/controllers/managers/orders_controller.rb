@@ -16,7 +16,7 @@ class Managers::OrdersController < ApplicationController
       if @order.received_status == "入金確認"
         @order_details.update_all(make_status: 1)
       end
-      flash[:success] = "変更しました"
+      flash[:success] = "注文ステータスを変更しました"
       redirect_to managers_order_path(@order)
     else
       render "show"

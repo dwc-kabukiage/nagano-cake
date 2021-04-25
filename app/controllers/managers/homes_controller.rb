@@ -1,5 +1,5 @@
 class Managers::HomesController < ApplicationController
   def top
-    @orders = Order.all.order("id DESC")
+    @orders = Order.page(params[:page]).per(10).order("id DESC")
   end
 end

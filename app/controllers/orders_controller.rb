@@ -23,6 +23,14 @@ class OrdersController < ApplicationController
       @order.postcode = params[:order][:postcode]
       @order.address     = params[:order][:address]
       @order.name        = params[:order][:name]
+      @deliveries = Delivery.new
+      @deliveries.member_id = current_member.id
+      @deliveries.name =  @order.name
+      @deliveries.postcode = @order.postcode
+      @deliveries.address = @order.address
+       @deliveries.save
+
+
     elsif params[:order][:addresses] == "member_deliveries"
       @order.postcode = Delivery.find(params[:order][:delivery_id]).postcode
       @order.address     =  Delivery.find(params[:order][:delivery_id]).address
@@ -33,7 +41,6 @@ class OrdersController < ApplicationController
   def create
     @order = current_member.orders.new(order_params)
     @order.save
-    flash[:notice] = "ご注文が確定しました。"
     redirect_to complete_orders_path
     @cart_items = current_member.cart_items
     @cart_items.each do |cart_item|
@@ -47,7 +54,7 @@ class OrdersController < ApplicationController
   @cart_items.destroy_all
   end
   def index
-    @orders = current_member.orders.all.order("id DESC")
+    @orders = current_member.orders.page(params[:page]).per(10).order("id DESC")
   end
 
   def show
@@ -56,6 +63,9 @@ class OrdersController < ApplicationController
    @total_price = (@order.claim - @order.freight )
   end
   private
+  def address_params
+   params.permit(:postcode, :address, :name)
+  end
   def order_params
     params.require(:order).permit(:postcode, :address, :name, :payment, :claim)
   end

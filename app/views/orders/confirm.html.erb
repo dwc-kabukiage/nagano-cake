@@ -56,7 +56,7 @@
     </tr>
     <tr>
       <th></th>
-      <td class="pl-5"><%= " #{@order.name}" %></td>
+      <td class="pl-5"><%= " #{@order.name}" %>様</td>
     </tr>
   </table>
   </div>
@@ -66,5 +66,6 @@
     <%= f.hidden_field :name %>
     <%= f.hidden_field :payment %>
     <%= f.hidden_field :claim %>
-    <%= f.submit '投稿する', class: "btn btn-primary col-md-4 offset-md-4" %>
+    <%= f.submit '注文を確定する', class: "btn btn-primary col-md-4 offset-md-4" %>
 <% end %>
+  </div>
