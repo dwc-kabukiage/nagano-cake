@@ -10,7 +10,8 @@
 
   <body>
     <header class="shadow-sm">
-      <nav class="navbar navbar-expand-lg navbar-light">
+      <nav class="navbar navbar-expand-lg navbar-light p-4">
+        <div class="container">
           <a class="navbar-brand" href="/"><span>ながのCAKE</span></a>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,7 +21,8 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if member_signed_in? %>
-              <li><%= link_to "マイページ",members_path, class: 'nav-link text-dark' %></li>
+              <span class="navbar-text ml-auto">ようこそ、<%= current_member.last_name + current_member.first_name %>さん！</span>
+              <li><%= link_to "マイページ",members_path(current_member.id), class: 'nav-link text-dark' %></li>
               <li><%= link_to "商品一覧", products_path, class: 'nav-link text-dark' %></li>
               <li><%= link_to "カート", cart_items_path, class: 'nav-link text-dark' %></li>
               <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: 'nav-link text-dark' %></li>
@@ -40,8 +42,19 @@
             <% end %>
             </ul>
           </div>
+        </div>
       </nav>
     </header>
+    <div class="row mt-4"></div>
     <%= yield %>
+    <footer>
+      <div class='container'>
+        <div class="row fixed-bottom">
+          <div class="mx-auto">
+            <p>Copyright © 2020 NaganoCake Inc. All Rights Reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
