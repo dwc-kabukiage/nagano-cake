@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     case resource
 
     when Member
-      members_path(current_member)
+      members_path
     when Manager
       managers_path
     end
