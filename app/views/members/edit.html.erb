@@ -1,0 +1,61 @@
+<div class = "container">
+ <div class = "row">
+  <div class = "col-md-8 offset-md-1">
+   <h2>会員情報編集 </h2>
+   <% if @member.errors.any? %>
+  <%= @member.errors.count %>件のエラーが発生しました
+  <% @member.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+  <%= form_with model: @member, url: members_path(@member.id), class: 'edit_member', local: true do |f| %>
+
+    <div class="field">
+     <%= f.label :名前　姓 %>
+     <%= f.text_field :last_name, autofocus: true %>
+
+     <%= f.label :　名 %>
+     <%= f.text_field :first_name, autofocus: true %>
+    </div>
+
+    <div class="field">
+     <%= f.label :ふりがな %>
+     <%= f.text_field :last_name_kana, autofocus: true %>
+
+     <%= f.label :ふりがな %>
+     <%= f.text_field :first_name_kana, autofocus: true %>
+    </div>
+
+    <div class="field">
+     <%= f.label :郵便番号 %><br />
+     <%= f.text_field :postcode, autofocus: true %>
+    </div>
+
+    <div class="field">
+     <%= f.label :住所 %><br />
+     <%= f.text_field :address, autofocus: true %>
+    </div>
+
+    <div class="field">
+     <%= f.label :電話番号 %><br />
+     <%= f.text_field :phone_number, autofocus: true %>
+    </div>
+
+    <div class="field">
+     <%= f.label :メールアドレス %><br />
+     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="actions">
+     <%= f.submit "保存" %>
+    </div>
+  <% end %>
+    <div class="actions">
+     <%= link_to "退会する", member_withdraw_path %>
+    </div>
+    <div>
+     <%= link_to "Back", :back %>
+    </div>
+   </div>
+  </div>
+ </div>

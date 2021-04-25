@@ -1,0 +1,45 @@
+<div class="container">
+  <h2 class="pl-5">注文情報入力</h2>
+  <div class="row">
+  <div class="col-md-8">
+    <% if current_member.cart_items.present? %>
+    <%= form_with :model => @order, url:confirm_orders_path, method: :post, local:true do |f| %>
+    <h3>支払い方法</h3>
+    <div class="pl-4">
+      <%= f.radio_button :payment, :"クレジットカード", checked: true %>
+      <span>クレジットカード</span><br>
+      <%= f.radio_button :payment, :"銀行振込" %>
+      <span>銀行振り込み</span></div>
+    <h3>お届け先</h3><br>
+    <div class="pl-4">
+      <%= f.radio_button :addresses, "residence", checked: true  %>
+      <span>ご自身の住所</span><br>
+      <div class="pl-4">
+        〒<%= "#{current_member.postcode} #{current_member.address}" %><br>
+        <%= "#{current_member.last_name} #{current_member.first_name}" %><br>
+      </div>
+       <%= f.radio_button :addresses, "member_deliveries" %>
+        <span>登録済住所から選択</span>
+         <div class="pl-4">
+         <%= f.collection_select(:delivery_id,@deliveries,:id,:order_address) %>
+         </div>
+      <%= f.radio_button :addresses, "new_address" %>
+      <span>新しいお届け先</span><br>
+      <div class="pl-4">
+        <span>郵便番号（ハイフンなし）</span>
+        <%= f.text_field :postcode, class: "col-sm-3" %><br>
+        <span>住所</span>
+        <%= f.text_field :address, class: "col-sm-6" %><br>
+        <span>宛名</span>
+        <%= f.text_field :name, class: "col-sm-3" %><br>
+      </div>
+    </div>
+    <%= f.submit "確認画面へ進む", class: "btn btn-primary col-md-4 offset-md-4" %>
+    <% end %>
+    <% else %>
+    <p>ショッピングカートに商品がありません</p>
+    <%= link_to "商品一覧", products_path, class: "btn btn-primary" %>
+    <% end %>
+  </div>  
+ </div>
+</div>
