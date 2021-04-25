@@ -1,12 +1,14 @@
 class Managers::ProductsController < ApplicationController
 
+  before_action :authenticate_manager!
+
   def new
      @product = Product.new
   end
 
   def index
     @products = Product.all
-    @posts = @products.page.per(10)
+    @posts = @products.page(params[:page]).per(10)
   end
 
   def show
@@ -14,15 +16,23 @@ class Managers::ProductsController < ApplicationController
   end
 
   def create
-     @product = Product.new(product_params)
-     @product.save
-     redirect_to managers_product_path(@product)
+    @product = Product.new(product_params)
+    if @product.save
+    redirect_to managers_product_path(@product)
+    else
+    render :new
+    end
   end
 
   def update
     @product = Product.find(params[:id])
     @product.update(product_params)
-    redirect_to managers_products_path(@product)
+    if @product.save
+        redirect_to managers_products_path(@product)
+    else
+       @product = Product.find(params[:id])
+       render :edit
+    end
   end
 
   def edit

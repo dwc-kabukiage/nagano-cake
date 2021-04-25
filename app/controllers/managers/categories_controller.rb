@@ -1,5 +1,7 @@
 class Managers::CategoriesController < ApplicationController
 
+  before_action :authenticate_manager!
+
   def index
     @categories = Category.all
     @category = Category.new
@@ -7,9 +9,12 @@ class Managers::CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-
-    @category.save
+   if @category.save
     redirect_to managers_categories_path
+   else
+    @categories = Category.all
+    render :index
+   end
   end
 
   def edit
@@ -18,8 +23,12 @@ class Managers::CategoriesController < ApplicationController
 
   def update
     @category = Category.find(params[:id])
-    @category.update(category_params)
-    redirect_to managers_categories_path(@category)
+    if @category.update(category_params)
+       redirect_to managers_categories_path(@category)
+    else
+      @category = Category.find(params[:id])
+      render :edit
+    end
   end
 
   private

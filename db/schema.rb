@@ -81,11 +81,11 @@ ActiveRecord::Schema.define(version: 2021_04_20_085848) do
     t.integer "member_id"
     t.integer "freight", default: 800
     t.integer "claim"
-    t.integer "payment"
+    t.integer "payment", default: 0
     t.string "postcode"
     t.string "address"
     t.string "name"
-    t.integer "received_status"
+    t.integer "received_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
